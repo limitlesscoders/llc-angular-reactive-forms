@@ -1,0 +1,62 @@
+<mat-card class="example-card">
+  <mat-card-header>  
+    <mat-card-title>Enter Bank Details</mat-card-title>  
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="bankForm" novalidate>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name *</mat-label>
+          <input matInput formControlName="firstName" placeholder="Enter First Name">              
+          <mat-hint class="error" *ngIf="bankForm.get('firstName').hasError('required') && bankForm.get         ('firstName').touched"> Please enter first name</mat-hint>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name *</mat-label>
+          <input matInput formControlName="lastName" placeholder="Enter Last Name">    
+          <mat-hint class="error" *ngIf="bankForm.get('lastName').hasError('required') && bankForm.get         ('lastName').touched"> Please enter first name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="bankForm.get('nickName')">
+          <mat-label>Account Nickname</mat-label>
+          <input matInput formControlName="nickName" placeholder="Enter nickname">    
+          <mat-hint class="error" *ngIf="bankForm.get('nickName').hasError('required') && bankForm.get         ('nickName').touched"> Please enter first name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Account Number *</mat-label>
+          <input matInput formControlName="accountNumber" placeholder="Enter Account Number">   
+          <mat-hint class="error" *ngIf="bankForm.get('accountNumber').hasError('required') && bankForm.get('accountNumber').touched"> Please enter account number</mat-hint>
+          <mat-hint class="error" *ngIf="bankForm.get('accountNumber').errors?.pattern && bankForm.get         ('accountNumber').touched"> Please valid input</mat-hint> 
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Routing Number *</mat-label>
+          <input matInput formControlName="routingNumber" placeholder="Enter Routing Number">    
+          <mat-hint class="error" *ngIf="bankForm.get('routingNumber').hasError('required') && bankForm.get         ('routingNumber').touched"> Please enter first name</mat-hint>
+          <mat-hint class="error" *ngIf="bankForm.get('routingNumber').errors?.pattern && bankForm.get         ('routingNumber').touched"> Please enter first name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email *</mat-label>
+          <input matInput formControlName="email" placeholder="Enter Email">    
+           <mat-hint class="error" *ngIf="bankForm.get('email').hasError('required') && bankForm.get         ('email').touched"> Please enter email</mat-hint>
+            <mat-hint class="error" *ngIf="bankForm.get('email').errors?.pattern && bankForm.get         ('email').touched"> Please enter valid email</mat-hint>
+        </mat-form-field>
+
+        <p><strong>Is form valid ? {{bankForm.valid}}</strong></p>
+        <p><strong>Is form dirty ? {{bankForm.dirty}}</strong></p>    
+        <pre>
+          {{bankForm.getRawValue() | json}}
+        </pre>
+        
+          <div>
+              <button (click)="diableValidations()" mat-raised-button>Disable Validations</button>
+              <button (click)="enableValidations()" mat-raised-button>Enable Validations</button>
+              <button (click)="removeNickName()" mat-raised-button>Remove Nickname</button>                            
+              <button (click)="validateAndSave()" mat-raised-button>VALIDATE</button>
+          </div>
+    </form> 
+  </mat-card-content>
+</mat-card>
+

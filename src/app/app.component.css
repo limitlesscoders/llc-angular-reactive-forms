@@ -1,0 +1,17 @@
+.example-card {
+  max-width: 550px;
+}
+
+mat-form-field {
+margin:5px;
+padding: 5px;
+}
+
+.error{
+  color: red;
+}
+
+button{
+  width:150px;
+  margin:2px;
+}
